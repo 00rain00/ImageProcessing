@@ -12,7 +12,7 @@ temp = reshape(temp,nrows*ncols,2);
 
 nColors = 5;
 %k-mens
-[cluster_idx, cluster_center] = skmeans(temp,nColors,5);
+[cluster_idx, cluster_center] = skmeans(temp,nColors,3);
 
 % fuzzy k-means cluster
 % lab_pic = reshape(lab_pic,157500,3);
