@@ -4,6 +4,7 @@ clusterC = datasample(data,k,'Replace',false);
 
 classidx = zeros(size(data,1),1);
 U = zeros(size(data,1),k);
+variance=zeros(n,k);
 %compute u values
 items=size(data,1);
 for a = 1:n
@@ -21,11 +22,21 @@ end
 
 %update center
 for i=1:k
-   clusterC(i,:)= sum((U(:,i).^2).*data) ./ sum(U(:,i).^2);
    
-    
+   temp = sum((U(:,i).^2).*data) ./ sum(U(:,i).^2);
+  
+   variance(a,i) = pdist([clusterC(i,:);temp]);
+    clusterC(i,:) = temp;
 end
 
+
+
+
+end
+%can put in the main function
+for j = 1:k
+     figure, plot((1:n),variance(:,j));
+    
 end
 
 
