@@ -1,7 +1,14 @@
-function [classidx,clusterC] = sfkmeans(data,k,n)
+function [classidx,clusterC,variance] = sfkmeans(pic,data,k,n)
 clusterC = zeros(k,3);
+% for t=1:5
+%     imshow(pic,'InitialMagnification',200);
+%     [xi,yi] = getpts;
+%     points =impixel(pic,xi,yi);
+%     clusterC(t,:)=rgb2lab(points);
+%     
+%    
+% end
 clusterC = datasample(data,k,'Replace',false);
-
 classidx = zeros(size(data,1),1);
 U = zeros(size(data,1),k);
 variance=zeros(n,k);
@@ -18,8 +25,6 @@ for i =1:items
     classidx(i,:)=classid;
     
 end
-
-
 %update center
 for i=1:k
    
@@ -28,18 +33,6 @@ for i=1:k
    variance(a,i) = pdist([clusterC(i,:);temp]);
     clusterC(i,:) = temp;
 end
-
-
-
-
 end
-%can put in the main function
-for j = 1:k
-     figure, plot((1:n),variance(:,j));
-    
-end
-
-
-
 end
 

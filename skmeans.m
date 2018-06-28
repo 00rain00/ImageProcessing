@@ -1,4 +1,4 @@
-function [clusterid,clusterC] = skmeans(data,k,n)
+function [clusterid,clusterC,variance] = skmeans(data,k,n)
 %SKMEANS Summary of this function goes here
 %random select points according to k
 clusterC = zeros(k,2);
